@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tajine de poivrons, tomates et œufs — Kozinat Bladi</title>
+  <meta name="description" content="Un tajine végétarien savoureux et coloré aux poivrons, tomates et œufs, parfait pour un repas léger accompagné de pain maison." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@400;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/recipe.css" />
+</head>
+<body>
+  <nav id="navbar" class="navbar scrolled">
+    <div class="nav-container">
+      <a href="../index.html#accueil" class="nav-logo"><span class="logo-icon">🍲</span><span class="logo-text">Kozinat Bladi</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#accueil" class="nav-link">Accueil</a></li>
+        <li><a href="../index.html#histoire" class="nav-link">Notre Histoire</a></li>
+        <li><a href="../index.html#souk" class="nav-link">Le Souk</a></li>
+        <li><a href="../index.html#recettes" class="nav-link active">Kozina</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="recipe-hero">
+    <img src="https://www.cuisinonsencouleurs.fr/wp-content/uploads/2021/07/tajine-poivrons-tomates-1152x1536.jpg" alt="Tajine de poivrons, tomates et œufs" class="recipe-hero-img" />
+    <div class="recipe-hero-overlay"></div>
+    <div class="recipe-hero-content">
+      <div class="recipe-breadcrumb"><a href="../index.html">Accueil</a> <span>›</span> <a href="../index.html#recettes">Recettes</a> <span>›</span> <span>Tajine de poivrons, tomates et œufs</span></div>
+      <h1 class="recipe-hero-title">Tajine de poivrons, tomates et œufs</h1>
+      <p class="recipe-hero-desc">Un tajine végétarien savoureux et coloré aux poivrons, tomates et œufs, parfait pour un repas léger accompagné de pain maison.</p>
+    </div>
+  </div>
+  <div class="recipe-meta-bar">
+    <div class="recipe-meta-item"><span class="meta-icon">⏱️</span><span class="meta-label">Préparation</span><span class="meta-value">10 min</span></div>
+    <div class="recipe-meta-item"><span class="meta-icon">🔥</span><span class="meta-label">Cuisson</span><span class="meta-value">25 min</span></div>
+    <div class="recipe-meta-item"><span class="meta-icon">👥</span><span class="meta-label">Portions</span><span class="meta-value">2 personnes</span></div>
+    <div class="recipe-meta-item"><span class="meta-icon">📍</span><span class="meta-label">Origine</span><span class="meta-value">National</span></div>
+  </div>
+  <div class="recipe-body">
+    <aside class="recipe-ingredients">
+      <h2>🧂 Ingrédients</h2>
+      <ul class="ingredient-list">
+        <li>1 échalote</li>
+        <li>200 g de poivrons de toutes les couleurs</li>
+        <li>400 g de pulpe de tomates</li>
+        <li>3 œufs</li>
+        <li>1 pincée de sel</li>
+        <li>1 pincée de poivre</li>
+        <li>1 c. à soupe d'huile d'olive</li>
+        <li>Quelques feuilles de coriandre fraîche</li>
+      </ul>
+    </aside>
+    <div class="recipe-instructions">
+      <h2>👩‍🍳 Préparation</h2>
+      <ol class="step-list">
+        <li>Versez un filet d'huile d'olive dans votre tajine. Ajoutez-y l'échalote hachée et remuez.</li>
+        <li>Ajoutez ensuite les poivrons en lamelles et mélangez bien.</li>
+        <li>Ajoutez la pulpe de tomates et laissez cuire une dizaine de minutes.</li>
+        <li>Cassez les œufs par-dessus et couvrez jusqu'à obtenir la cuisson des œufs souhaitée.</li>
+        <li>Ajoutez un peu de sel, un peu de poivre du moulin et quelques feuilles de coriandre sur le dessus, puis servez avec du pain.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="recipe-source">Recette adaptée de <a href="https://www.cuisinonsencouleurs.fr/2021/07/tajine-de-poivrons-tomates-et-oeufs.html" target="_blank" rel="noopener">Cuisinons en Couleurs</a></div>
+  <div class="recipe-bottom"><a href="../index.html#recettes" class="recipe-back">← Retour aux recettes</a></div>
+  <footer class="footer">
+    <div class="zellige-bg zellige-footer"></div>
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none; padding-top: 0;">
+        <p>Cuisiné avec <span class="heart">❤️</span> au Maroc — © 2026 Kozinat Bladi</p>
+        <p class="dancing">صنع بحب في المغرب</p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('navToggle').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

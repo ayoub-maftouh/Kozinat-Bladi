@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ghriyba dial louz — Kozinat Bladi</title>
+  <meta name="description" content="Ghriyba dial louz, un délicieux sablé traditionnel marocain aux amandes, fondant et parfait pour un goûter gourmand." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@400;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/recipe.css" />
+</head>
+<body>
+  <nav id="navbar" class="navbar scrolled">
+    <div class="nav-container">
+      <a href="../index.html#accueil" class="nav-logo">
+        <span class="logo-icon">🍲</span>
+        <span class="logo-text">Kozinat Bladi</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#accueil" class="nav-link">Accueil</a></li>
+        <li><a href="../index.html#histoire" class="nav-link">Notre Histoire</a></li>
+        <li><a href="../index.html#souk" class="nav-link">Le Souk</a></li>
+        <li><a href="../index.html#recettes" class="nav-link active">Kozina</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="recipe-hero">
+    <img src="https://www.cuisinonsencouleurs.fr/wp-content/uploads/2025/03/ghriyba-dial-louz-01-1152x1536.jpg" alt="Ghriyba dial louz" class="recipe-hero-img" />
+    <div class="recipe-hero-overlay"></div>
+    <div class="recipe-hero-content">
+      <div class="recipe-breadcrumb">
+        <a href="../index.html">Accueil</a> <span>›</span>
+        <a href="../index.html#recettes">Recettes</a> <span>›</span>
+        <span>Ghriyba dial louz</span>
+      </div>
+      <h1 class="recipe-hero-title">Ghriyba dial louz</h1>
+      <p class="recipe-hero-desc">Délicieux sablé traditionnel marocain aux amandes, fondant et parfait pour un goûter ou un dessert gourmand.</p>
+    </div>
+  </div>
+
+  <div class="recipe-meta-bar">
+    <div class="recipe-meta-item"><span class="meta-icon">⏱️</span><span class="meta-label">Préparation</span><span class="meta-value">10 min</span></div>
+    <div class="recipe-meta-item"><span class="meta-icon">🔥</span><span class="meta-label">Cuisson</span><span class="meta-value">8 min</span></div>
+    <div class="recipe-meta-item"><span class="meta-icon">👥</span><span class="meta-label">Portions</span><span class="meta-value">6 personnes</span></div>
+    <div class="recipe-meta-item"><span class="meta-icon">📍</span><span class="meta-label">Origine</span><span class="meta-value">National</span></div>
+  </div>
+
+  <div class="recipe-body">
+    <aside class="recipe-ingredients">
+      <h2>🧂 Ingrédients</h2>
+      <ul class="ingredient-list">
+        <li>35 g de beurre</li>
+        <li>1 œuf</li>
+        <li>90 g de sucre glace</li>
+        <li>200 g de poudre d'amande</li>
+        <li>1 c. à café rase de levure chimique</li>
+      </ul>
+      <h3 style="margin-top:1rem;font-size:1rem;">Pour l'enrobage</h3>
+      <ul class="ingredient-list">
+        <li>1 blanc d'œuf</li>
+        <li>50 g d'amandes effilées</li>
+        <li>50 g de sucre glace</li>
+      </ul>
+    </aside>
+    <div class="recipe-instructions">
+      <h2>👩‍🍳 Préparation</h2>
+      <ol class="step-list">
+        <li>Commencez par faire fondre le beurre. Ajoutez-y l'œuf et mélangez.</li>
+        <li>Ajoutez ensuite le sucre glace, la poudre d'amandes, la levure chimique et mélangez pour obtenir une pâte homogène.</li>
+        <li>Formez des boules en humidifiant vos mains.</li>
+        <li>Roulez-les dans le blanc d'œuf. Faites ensuite 2 versions : roulez la première dans les amandes effilées et la deuxième dans le sucre glace.</li>
+        <li>Enfournez vos ghriyba 8 minutes à 170°C.</li>
+        <li>Retirez du four (ils seront encore mous) et laissez complètement refroidir avant d'y toucher. Conservez dans une boîte hermétique.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="recipe-source">
+    Recette adaptée de <a href="https://www.cuisinonsencouleurs.fr/2025/03/ghriyba-dial-louz-biscuit-aux-amandes.html" target="_blank" rel="noopener">Cuisinons en Couleurs</a>
+  </div>
+
+  <div class="recipe-bottom">
+    <a href="../index.html#recettes" class="recipe-back">← Retour aux recettes</a>
+  </div>
+
+  <footer class="footer">
+    <div class="zellige-bg zellige-footer"></div>
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none; padding-top: 0;">
+        <p>Cuisiné avec <span class="heart">❤️</span> au Maroc — © 2026 Kozinat Bladi</p>
+        <p class="dancing">صنع بحب في المغرب</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('navToggle').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

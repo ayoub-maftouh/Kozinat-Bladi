@@ -1,0 +1,1353 @@
+/* ═══════════════════════════════════════════
+   KOZINAT BLADI — CSS STYLESHEET
+   Gastronomie Marocaine
+   ═══════════════════════════════════════════ */
+
+/* ─── CSS Custom Properties ─── */
+:root {
+  /* Couleurs principales */
+  --terracotta: #8B1A1A;
+  --terracotta-dark: #6B1414;
+  --terracotta-light: #C0392B;
+  --rouge-marrakech: #A93226;
+
+  /* Couleurs secondaires */
+  --bleu-majorelle: #6050DC;
+  --vert-menthe: #3EB489;
+  --vert-menthe-dark: #2E8B6A;
+
+  /* Accents */
+  --jaune-safran: #E4A010;
+  --jaune-safran-light: #F5C543;
+
+  /* Fonds */
+  --fond-clair: #FDF6EE;
+  --fond-parchemin: #FAF0E4;
+  --fond-blanc: #FFFDF9;
+  --fond-section-alt: #FFF8F0;
+
+  /* Textes */
+  --text-dark: #2C1810;
+  --text-body: #4A3728;
+  --text-muted: #7A6555;
+  --text-light: #A89485;
+
+  /* Utilitaires */
+  --shadow-sm: 0 2px 8px rgba(44, 24, 16, 0.08);
+  --shadow-md: 0 4px 20px rgba(44, 24, 16, 0.12);
+  --shadow-lg: 0 8px 40px rgba(44, 24, 16, 0.16);
+  --shadow-xl: 0 16px 60px rgba(44, 24, 16, 0.2);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Typographie */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Nunito', 'Segoe UI', sans-serif;
+  --font-handwritten: 'Dancing Script', cursive;
+}
+
+/* ─── Reset & Base ─── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-body);
+  background-color: var(--fond-clair);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition);
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.highlight {
+  color: var(--terracotta);
+}
+
+.dancing {
+  font-family: var(--font-handwritten);
+}
+
+/* ═══════════════════════════════════════════
+   ZELLIGE BACKGROUND PATTERN
+   ═══════════════════════════════════════════ */
+.zellige-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20px,
+      var(--terracotta) 20px,
+      var(--terracotta) 21px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 20px,
+      var(--terracotta) 20px,
+      var(--terracotta) 21px
+    );
+}
+
+.zellige-footer {
+  opacity: 0.05;
+}
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════════ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 68px;
+  transition: all var(--transition);
+  background: rgba(139, 26, 26, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid rgba(243, 156, 18, 0.3);
+  overflow: hidden;
+}
+
+.navbar.scrolled {
+  background: rgba(139, 26, 26, 0.98);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  height: 60px;
+  box-shadow: var(--shadow-md);
+}
+
+.nav-container {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--fond-blanc);
+  transition: color var(--transition);
+}
+
+.navbar.scrolled .nav-logo {
+  color: var(--fond-blanc);
+}
+
+.logo-img {
+  width: auto;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.18));
+}
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-link {
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all var(--transition);
+  position: relative;
+}
+
+.navbar.scrolled .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--fond-blanc);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--jaune-safran);
+  border-radius: 2px;
+  transition: width var(--transition);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 20px;
+}
+
+.navbar.scrolled .nav-link:hover,
+.navbar.scrolled .nav-link.active {
+  color: var(--fond-blanc);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Mobile Toggle */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: all var(--transition);
+}
+
+.navbar.scrolled .nav-toggle span {
+  background: white;
+}
+
+.nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -6px);
+}
+
+/* ═══════════════════════════════════════════
+   HERO SECTION
+   ═══════════════════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(44, 24, 16, 0.55),
+      rgba(44, 24, 16, 0.75)
+    ),
+    url('https://images.unsplash.com/photo-1541518763669-27fef04b14ea?w=1920&q=80') center/cover no-repeat;
+  color: white;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center bottom, rgba(193, 68, 14, 0.3) 0%, transparent 70%);
+}
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(228, 160, 16, 0.4);
+  animation: float-up linear infinite;
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1);
+    opacity: 0;
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 24px;
+}
+
+.hero-subtitle {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  color: var(--jaune-safran-light);
+  letter-spacing: 1px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.hero-title .highlight {
+  color: var(--jaune-safran-light);
+}
+
+.hero-tagline {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 600;
+  margin-bottom: 12px;
+  opacity: 0.95;
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  max-width: 560px;
+  margin: 0 auto 32px;
+  opacity: 0.85;
+  line-height: 1.8;
+}
+
+/* ─── Buttons ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition);
+}
+
+.btn-primary {
+  background: var(--terracotta);
+  color: white;
+  box-shadow: 0 4px 20px rgba(193, 68, 14, 0.4);
+}
+
+.btn-primary:hover {
+  background: var(--terracotta-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(193, 68, 14, 0.5);
+}
+
+/* Scroll Indicator */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.mouse {
+  width: 28px;
+  height: 44px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.wheel {
+  width: 4px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 2px;
+  animation: scroll-wheel 2s ease-in-out infinite;
+}
+
+@keyframes scroll-wheel {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(10px); opacity: 0.3; }
+}
+
+/* ═══════════════════════════════════════════
+   SECTIONS (Général)
+   ═══════════════════════════════════════════ */
+.section {
+  position: relative;
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+.section-histoire {
+  background: var(--fond-clair);
+}
+
+.section-souk {
+  background: var(--fond-section-alt);
+}
+
+.section-recettes {
+  background: var(--fond-clair);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.section-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--terracotta), var(--terracotta-light));
+  color: white;
+  padding: 6px 20px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ═══════════════════════════════════════════
+   NOTRE HISTOIRE
+   ═══════════════════════════════════════════ */
+.histoire-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.image-frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.image-frame img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.image-frame:hover img {
+  transform: scale(1.05);
+}
+
+.image-ornament {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  right: -12px;
+  bottom: -12px;
+  border: 2px solid var(--terracotta);
+  border-radius: var(--radius-lg);
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 16px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--terracotta), var(--vert-menthe));
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 36px;
+  padding-left: 24px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -32px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  background: var(--terracotta);
+  border-radius: 50%;
+  border: 3px solid var(--fond-clair);
+  box-shadow: 0 0 0 2px var(--terracotta);
+}
+
+.timeline-icon {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.timeline-text h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.timeline-text p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════
+   CARTE INTERACTIVE
+   ═══════════════════════════════════════════ */
+.carte-wrapper {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.carte-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.carte-desc {
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+.carte-interactive {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.morocco-map {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.map-credits {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+.map-credits a {
+  color: var(--bleu-majorelle);
+  text-decoration: none;
+}
+
+.map-credits a:hover {
+  text-decoration: underline;
+}
+
+.map-region {
+  fill: var(--terracotta-light);
+  stroke: var(--fond-clair);
+  stroke-width: 2;
+  cursor: pointer;
+  transition: all var(--transition);
+  opacity: 0.75;
+}
+
+.map-region:hover {
+  fill: var(--terracotta);
+  opacity: 1;
+  filter: drop-shadow(0 4px 12px rgba(193, 68, 14, 0.4));
+  transform-origin: center;
+}
+
+.map-region.active {
+  fill: var(--bleu-majorelle);
+  opacity: 1;
+  filter: drop-shadow(0 4px 16px rgba(96, 80, 220, 0.5));
+}
+
+.map-label {
+  fill: var(--text-dark);
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-anchor: middle;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.map-tooltip {
+  position: absolute;
+  background: white;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.25s ease;
+  z-index: 10;
+  text-align: left;
+  min-width: 220px;
+  border-left: 4px solid var(--terracotta);
+}
+
+.map-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tooltip-icon {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.tooltip-region {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--terracotta);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.tooltip-plat {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.tooltip-cta {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: var(--bleu-majorelle);
+  font-weight: 700;
+}
+
+/* ─── Recipe Card Links ─── */
+.recette-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+/* ─── Region Highlight Animation ─── */
+.recette-card.region-highlight {
+  animation: regionGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes regionGlow {
+  0%, 100% { box-shadow: var(--shadow-md); }
+  50% { box-shadow: 0 0 20px rgba(96, 80, 220, 0.4), 0 0 40px rgba(96, 80, 220, 0.2); }
+}
+
+.carte-desc {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  font-size: 1rem;
+}
+
+/* ═══════════════════════════════════════════
+   LE SOUK — INGRÉDIENTS
+   ═══════════════════════════════════════════ */
+.souk-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.souk-card {
+  perspective: 800px;
+  height: 380px;
+  cursor: pointer;
+}
+
+.souk-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.souk-card:hover .souk-card-inner {
+  transform: rotateY(180deg);
+}
+
+.souk-card-front,
+.souk-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.souk-card-front {
+  background: white;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.souk-img-wrapper {
+  width: 100%;
+  height: 240px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.souk-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.souk-card:hover .souk-img-wrapper img {
+  transform: scale(1.1);
+}
+
+.souk-card-front h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.souk-hint {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-top: auto;
+}
+
+.souk-card-back {
+  background: linear-gradient(135deg, var(--terracotta), var(--rouge-marrakech));
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  text-align: center;
+}
+
+.souk-back-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.souk-card-back h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
+.souk-card-back p {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+/* ═══════════════════════════════════════════
+   KOZINA — RECETTES
+   ═══════════════════════════════════════════ */
+
+/* Filtres */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.filter-btn {
+  padding: 10px 24px;
+  border: 2px solid var(--terracotta);
+  border-radius: 50px;
+  background: transparent;
+  color: var(--terracotta);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--terracotta);
+  color: white;
+  box-shadow: 0 4px 16px rgba(193, 68, 14, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Grille de Recettes */
+.recettes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.recette-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition);
+}
+
+.recette-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.recette-card.hidden {
+  display: none;
+}
+
+.recette-img {
+  position: relative;
+  height: 260px;
+  overflow: hidden;
+}
+
+.recette-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.recette-card:hover .recette-img img {
+  transform: scale(1.1);
+}
+
+.recette-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--jaune-safran);
+  color: white;
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  z-index: 2;
+}
+
+.recette-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(44, 24, 16, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.recette-card:hover .recette-overlay {
+  opacity: 1;
+}
+
+.recette-view {
+  padding: 10px 28px;
+  background: white;
+  color: var(--terracotta);
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transform: translateY(12px);
+  transition: transform var(--transition);
+}
+
+.recette-card:hover .recette-view {
+  transform: translateY(0);
+}
+
+.recette-info {
+  padding: 24px;
+}
+
+.recette-info h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.recette-info p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.recette-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.recette-stars {
+  margin-left: auto;
+  color: var(--jaune-safran);
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════ */
+.footer {
+  position: relative;
+  background: var(--text-dark);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 80px 0 32px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.footer-brand-identity {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  margin-bottom: 16px;
+}
+
+.footer-brand-identity .logo-img {
+  width: 70px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.footer-brand .logo-text {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 0;
+  display: block;
+}
+
+.footer-brand p {
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.footer-arabic {
+  font-size: 1.2rem;
+  color: var(--jaune-safran-light);
+}
+
+.footer-links h4,
+.footer-social h4 {
+  color: white;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.footer-links ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.6);
+  transition: all var(--transition);
+  position: relative;
+  padding-left: 0;
+}
+
+.footer-links a:hover {
+  color: var(--jaune-safran-light);
+  padding-left: 8px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.social-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all var(--transition);
+}
+
+.social-icon:hover {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+  margin-bottom: 4px;
+}
+
+.footer-bottom .heart {
+  animation: heartbeat 1.5s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.footer-bottom .dancing {
+  color: var(--jaune-safran-light);
+  font-size: 1.1rem;
+}
+
+/* ═══════════════════════════════════════════
+   BACK TO TOP
+   ═══════════════════════════════════════════ */
+.back-to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all var(--transition);
+  z-index: 99;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--terracotta-dark);
+  transform: translateY(-4px);
+}
+
+/* ═══════════════════════════════════════════
+   SCROLL REVEAL ANIMATIONS
+   ═══════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  transform: translateX(-60px) translateY(0);
+}
+
+.reveal-left.revealed {
+  transform: translateX(0) translateY(0);
+}
+
+.reveal-right {
+  transform: translateX(60px) translateY(0);
+}
+
+.reveal-right.revealed {
+  transform: translateX(0) translateY(0);
+}
+
+/* Stagger children */
+.souk-grid .souk-card:nth-child(2) { transition-delay: 0.1s; }
+.souk-grid .souk-card:nth-child(3) { transition-delay: 0.2s; }
+.souk-grid .souk-card:nth-child(4) { transition-delay: 0.3s; }
+.souk-grid .souk-card:nth-child(5) { transition-delay: 0.4s; }
+.souk-grid .souk-card:nth-child(6) { transition-delay: 0.5s; }
+
+.recettes-grid .recette-card:nth-child(2) { transition-delay: 0.1s; }
+.recettes-grid .recette-card:nth-child(3) { transition-delay: 0.2s; }
+.recettes-grid .recette-card:nth-child(4) { transition-delay: 0.15s; }
+.recettes-grid .recette-card:nth-child(5) { transition-delay: 0.25s; }
+.recettes-grid .recette-card:nth-child(6) { transition-delay: 0.35s; }
+.recettes-grid .recette-card:nth-child(7) { transition-delay: 0.2s; }
+.recettes-grid .recette-card:nth-child(8) { transition-delay: 0.3s; }
+.recettes-grid .recette-card:nth-child(9) { transition-delay: 0.4s; }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE DESIGN
+   ═══════════════════════════════════════════ */
+
+/* Tablette */
+@media (max-width: 1024px) {
+  .histoire-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .image-frame img {
+    height: 350px;
+  }
+
+  .souk-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .recettes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 70px;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: rgba(139, 26, 26, 0.98);
+    flex-direction: column;
+    padding: 100px 32px 32px;
+    gap: 8px;
+    box-shadow: var(--shadow-xl);
+    transition: right var(--transition);
+  }
+
+  .nav-links.open {
+    right: 0;
+  }
+
+  .nav-links .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    padding: 12px 20px;
+  }
+
+  .section {
+    padding: 70px 0;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  .souk-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .recettes-grid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+
+  .filter-bar {
+    gap: 8px;
+  }
+
+  .filter-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .timeline {
+    padding-left: 30px;
+  }
+
+  .carte-interactive {
+    max-width: 100%;
+  }
+
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .souk-card {
+    height: 360px;
+  }
+}
+
+/* ─── Préférence de mouvement réduit ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
