@@ -208,16 +208,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const shortNames = {
         'Tanger-Tétouan-Al Hoceima': 'Tanger',
         "L'Oriental": 'Oriental',
-        'Fès-Meknès': 'Fès-Meknès',
-        'Rabat-Salé-Kénitra': 'Rabat-Salé-Kénitra',
-        'Béni Mellal-Khénifra': 'Béni Mellal-Khénifra',
-        'Casablanca-Settat': 'Casablanca-Settat',
-        'Marrakech-Safi': 'Marrakech-Safi',
+        'Fès-Meknès': 'Fès',
+        'Rabat-Salé-Kénitra': 'Rabat',
+        'Béni Mellal-Khénifra': 'Béni Mellal',
+        'Casablanca-Settat': 'Casablanca',
+        'Marrakech-Safi': 'Marrakech',
         'Drâa-Tafilalet': 'Drâa-Tafilalet',
         'Souss-Massa': 'Souss-Massa',
-        'Guelmim-Oued Noun': 'Guelmim-Oued Noun',
-        'Laâyoune-Sakia El Hamra': 'Laâyoune-Sakia El Hamra',
-        'Dakhla-Oued Ed-Dahab': 'Dakhla-Oued Ed-Dahab'
+        'Guelmim-Oued Noun': 'Guelmim',
+        'Laâyoune-Sakia El Hamra': 'Laâyoune',
+        'Dakhla-Oued Ed-Dahab': 'Dakhla'
       };
 
       // Draw region paths
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
       region.style.cursor = 'pointer';
 
       region.addEventListener('mouseenter', () => {
-        const regionName = region.dataset.display || region.dataset.region;
+        const regionName = region.dataset.region;
         const plat = region.dataset.plat;
         const icon = region.dataset.icon;
         mapTooltip.querySelector('.tooltip-icon').textContent = icon;
@@ -304,6 +304,12 @@ document.addEventListener('DOMContentLoaded', () => {
         mapRegions.forEach(r => r.classList.remove('active'));
         region.classList.add('active');
 
+        // Show full region name in tooltip on click
+        mapTooltip.querySelector('.tooltip-icon').textContent = region.dataset.icon || '🍽️';
+        mapTooltip.querySelector('.tooltip-region').textContent = region.dataset.region;
+        mapTooltip.querySelector('.tooltip-plat').textContent = region.dataset.plat;
+        mapTooltip.classList.add('visible');
+
         const recettesSection = document.getElementById('recettes');
         const matchedRegions = regionFilterMap[filterKey] || ['national'];
 
@@ -338,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
           recetteCards.forEach(card => card.classList.remove('region-highlight'));
         }, 3000);
 
-        mapTooltip.classList.remove('visible');
+        setTimeout(() => mapTooltip.classList.remove('visible'), 3000);
       });
     });
 
