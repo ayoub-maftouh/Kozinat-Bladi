@@ -3,6 +3,12 @@
    Interactivité & Animations
    ═══════════════════════════════════════════ */
 
+// Removes suffixes like "(EH)" or "(EH-partial)" from GeoJSON region names
+function normalizeRegionName(name) {
+  if (!name) return '';
+  return name.split('(')[0].trim();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // ─── Éléments DOM ───
@@ -152,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const carteContainer = document.querySelector('.carte-interactive');
   const mapWidth = 700;
   const mapHeight = 800;
+  
 
   // Region metadata: name:en → { icon, plat, link, filter, arabicName }
   const regionMeta = {
@@ -197,6 +204,22 @@ document.addEventListener('DOMContentLoaded', () => {
       const projection = d3.geoMercator().fitSize([mapWidth, mapHeight], regions);
       const pathGenerator = d3.geoPath().projection(projection);
 
+      // Short display names used for labels and tooltip
+      const shortNames = {
+        'Tanger-Tétouan-Al Hoceima': 'Tanger',
+        "L'Oriental": 'Oriental',
+        'Fès-Meknès': 'Fès-Meknès',
+        'Rabat-Salé-Kénitra': 'Rabat-Salé-Kénitra',
+        'Béni Mellal-Khénifra': 'Béni Mellal-Khénifra',
+        'Casablanca-Settat': 'Casablanca-Settat',
+        'Marrakech-Safi': 'Marrakech-Safi',
+        'Drâa-Tafilalet': 'Drâa-Tafilalet',
+        'Souss-Massa': 'Souss-Massa',
+        'Guelmim-Oued Noun': 'Guelmim-Oued Noun',
+        'Laâyoune-Sakia El Hamra': 'Laâyoune-Sakia El Hamra',
+        'Dakhla-Oued Ed-Dahab': 'Dakhla-Oued Ed-Dahab'
+      };
+
       // Draw region paths
       svg.selectAll('path')
         .data(regions.features)
@@ -205,32 +228,18 @@ document.addEventListener('DOMContentLoaded', () => {
         .attr('class', 'map-region')
         .attr('d', pathGenerator)
         .each(function(d) {
-          const nameEn = d.properties['name:en'];
-          const meta = regionMeta[nameEn] || {};
+          const rawName = d.properties['name:en'] || '';
+          const cleanName = normalizeRegionName(rawName);
+          const meta = regionMeta[cleanName] || {};
           const el = d3.select(this);
-          el.attr('data-region', nameEn)
-            .attr('data-plat', meta.plat || '')
+          el.attr('data-region', cleanName)
+            .attr('data-plat', meta.plat || 'Plat typique à découvrir')
             .attr('data-icon', meta.icon || '🍽️')
             .attr('data-link', meta.link || '')
             .attr('data-filter', meta.filter || '')
-            .attr('data-ar', meta.ar || d.properties['name:ar'] || '');
+            .attr('data-ar', meta.ar || d.properties['name:ar'] || '')
+            .attr('data-display', shortNames[cleanName] || cleanName);
         });
-
-      // Add region labels at centroid
-      const shortNames = {
-        'Tanger-Tétouan-Al Hoceima': 'Tanger',
-        "L'Oriental": 'Oriental',
-        'Fès-Meknès': 'Fès',
-        'Rabat-Salé-Kénitra': 'Rabat',
-        'Béni Mellal-Khénifra': 'Béni Mellal',
-        'Casablanca-Settat': 'Casablanca',
-        'Marrakech-Safi': 'Marrakech',
-        'Drâa-Tafilalet': 'Drâa-Tafilalet',
-        'Souss-Massa': 'Souss-Massa',
-        'Guelmim-Oued Noun ': 'Guelmim',
-        'Laâyoune-Sakia El Hamra': 'Laâyoune',
-        'Dakhla-Oued Ed-Dahab': 'Dakhla'
-      };
 
       svg.selectAll('.map-label')
         .data(regions.features)
@@ -240,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .attr('x', d => pathGenerator.centroid(d)[0])
         .attr('y', d => pathGenerator.centroid(d)[1])
         .attr('font-size', '11')
-        .text(d => shortNames[d.properties['name:en']] || d.properties['name:en']);
+        .text(d => { const n = normalizeRegionName(d.properties['name:en'] || ''); return shortNames[n] || n; });
 
       // ─── Re-select rendered paths and bind interactivity ───
       mapRegions = document.querySelectorAll('.map-region');
@@ -257,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
       region.style.cursor = 'pointer';
 
       region.addEventListener('mouseenter', () => {
-        const regionName = region.dataset.region;
+        const regionName = region.dataset.display || region.dataset.region;
         const plat = region.dataset.plat;
         const icon = region.dataset.icon;
         mapTooltip.querySelector('.tooltip-icon').textContent = icon;
@@ -497,5 +506,3 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('%c🍲 Kozinat Bladi — Cuisiné avec ❤️ au Maroc', 
     'color: #C1440E; font-size: 16px; font-weight: bold; font-family: Georgia;');
 });
-
-
