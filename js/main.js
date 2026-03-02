@@ -227,9 +227,9 @@ document.addEventListener('DOMContentLoaded', () => {
         'Marrakech-Safi': 'Marrakech',
         'Drâa-Tafilalet': 'Drâa-Tafilalet',
         'Souss-Massa': 'Souss-Massa',
-        'Guelmim-Oued Noun (EH-partial)': 'Guelmim',
-        'Laâyoune-Sakia El Hamra (EH-partial)': 'Laâyoune',
-        'Dakhla-Oued Ed-Dahab (EH)': 'Dakhla'
+        'Guelmim-Oued Noun ': 'Guelmim',
+        'Laâyoune-Sakia El Hamra': 'Laâyoune',
+        'Dakhla-Oued Ed-Dahab': 'Dakhla'
       };
 
       svg.selectAll('.map-label')
@@ -497,3 +497,4 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('%c🍲 Kozinat Bladi — Cuisiné avec ❤️ au Maroc', 
     'color: #C1440E; font-size: 16px; font-weight: bold; font-family: Georgia;');
 });
+
