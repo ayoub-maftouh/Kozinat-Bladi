@@ -164,9 +164,9 @@ document.addEventListener('DOMContentLoaded', () => {
     'Marrakech-Safi':                      { icon: '🫕', plat: 'Tanjia de Marrakech',                    link: 'recettes/tanjia.html',               filter: 'marrakech', ar: 'مراكش-آسفي' },
     'Drâa-Tafilalet':                      { icon: '🫓', plat: 'Tajine de Boeuf aux Haricots Verts',     link: 'recettes/tajine-boeuf-haricots.html',filter: 'draa',      ar: 'درعة تافيلالت' },
     'Souss-Massa':                         { icon: '🥜', plat: "Zaalouk & Huile d'Argan",               link: 'recettes/zaalouk.html',              filter: 'souss',     ar: 'سوس-ماسة' },
-    'Guelmim-Oued Noun (EH-partial)':      { icon: '🐑', plat: 'Baghrirs & Méchoui',                    link: 'recettes/baghrirs.html',             filter: 'guelmim',   ar: 'كلميم وادي نون' },
-    'Laâyoune-Sakia El Hamra (EH-partial)':{ icon: '🌴', plat: 'Seffa & Dattes Medjool',                link: 'recettes/seffa.html',                filter: 'laayoune',  ar: 'العيون الساقية الحمراء' },
-    'Dakhla-Oued Ed-Dahab (EH)':           { icon: '🏜️', plat: 'Chermoula & Thé sahraoui',              link: 'recettes/chermoula.html',            filter: 'dakhla',    ar: 'الداخلة-وادي الذهب' }
+    'Guelmim-Oued Noun':      { icon: '🐑', plat: 'Baghrirs & Méchoui',                    link: 'recettes/baghrirs.html',             filter: 'guelmim',   ar: 'كلميم وادي نون' },
+    'Laâyoune-Sakia El Hamra':{ icon: '🌴', plat: 'Seffa & Dattes Medjool',                link: 'recettes/seffa.html',                filter: 'laayoune',  ar: 'العيون الساقية الحمراء' },
+    'Dakhla-Oued Ed-Dahab':           { icon: '🏜️', plat: 'Chermoula & Thé sahraoui',              link: 'recettes/chermoula.html',            filter: 'dakhla',    ar: 'الداخلة-وادي الذهب' }
   };
 
   // Map region filter → data-region values on recipe cards
@@ -497,4 +497,5 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('%c🍲 Kozinat Bladi — Cuisiné avec ❤️ au Maroc', 
     'color: #C1440E; font-size: 16px; font-weight: bold; font-family: Georgia;');
 });
+
 
